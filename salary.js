@@ -1,79 +1,117 @@
-    // prompt the user for input (outside the code block)
-    const basicSalary = prompt("Enter monthly basic Salary:");
-    const benefits = prompt("Enter monthly benefits:");
+//declared array of objects with (thresshold) and (rate) as property for each object.
+//threshold reps the limit for a certain rate.
+const NhifMonthlyRates = [{
+    threshold: 0,
+    rate: 0
+  },
+  {
+    threshold: 5999,
+    rate: 150
+  },
+  {
+    threshold: 7999,
+    rate: 300
+  },
+];
 
-    //declare constants with the rates for TAX, NSSF and NHIF.
+//tax rates based on income thresholds.
+const KraTaxRates = [{
+    threshold: 0,
+    rate: 0
+  },
+  {
+    threshold: 24000,
+    rate: 0.1
+  },
+  {
+    threshold: 32333,
+    rate: 0.25
+  },
+  {
+    threshold: 500000,
+    rate: 0.3
+  },
+  {
+    threshold: 800000,
+    rate: 0.325
+  },
+  {
+    threshold: Infinity,
+    rate: 0.35
+  }
+];
 
-    //KRA tax rates based on mothly basic salary.
-    const KraTaxRates = [
-      [(0, 0.1)],
-      [(24001, 0.25)],
-      [(32334, 0.3)],
-      [(500001, 0.325)],
-      [(800000, 0.35)],
-    ];
 
-    //NSSF Rates based on monthly basic salary.
-    const NssfRate = basicSalary * 0.06;
+//NSSF Rates based on monthly income.
+const NssfRate = 0.06;
 
-    //NHIF rates based on monthly basic salary.
-    const NhifMonthlyRates = [
-      [(0, 150)],
-      [(6000, 300)],
-      [(8000, 400)],
-      [(12000, 500)],
-      [(15000, 600)],
-      [(20000, 750)],
-      [(25000, 850)],
-      [(30000, 900)],
-      [(35000, 950)],
-      [(40000, 1000)],
-      [(45000, 1100)],
-      [(50000, 1200)],
-      [(60000, 1300)],
-      [(70000, 1400)],
-      [(80000, 1500)],
-      [(90000, 1600)],
-      [(100000, 1700)],
-    ];
+//calculate the monthly deduction-NHIF for a certain month.
+function calculateNHIFDeductions(income) {
 
-    //parseFloat to check if basicSalary or benefits isNaN and incase it isn't should print Invalid inputs.
-    //There should be a process exit to prevent further execution of the program with Invalid inputs.
-    if (isNaN(parseFloat(basicSalary)) || isNaN(parseFloat(benefits))) {
-      console.log("Invalid inputs");
-      alert("invalid input.Enter a number");
-      exit();
-    } else {
-      //let calculate tax based on basicSalary that will be entered.
-      //   let tax = ;
-      let taxableIncome = parseFloat(basicSalary) + parseFloat(benefits) - 0;
-      for (let i = 0; i < KraTaxRates.length; i++) {
-        if (
-          taxableIncome >= KraTaxRates[i][0] &&
-          taxableIncome <= KraTaxRates[i][1]
-        ) {
-          tax = taxableIncome * KraTaxRates[i][2];
-          break;
-        }
-      }
+  let deduction = 0;
 
-      // let calculate the NSSF deducts based on basicSalary that will be entered.
-      const NssfDeducts = parseFloat(basicSalary) * NssfRate;
+  for (let i = 0; i < NhifMonthlyRates.length; i++) {
+    const nhifRate = NhifMonthlyRates[i];
 
-      //let calculate NHIF deducts based on basicSalary that's entered.
-      let NhifDeducts = 0;
-      for (let i = 0; i < NhifMonthlyRates.length; i++) {
-        if (
-          taxableIncome >= NhifMonthlyRates[i][0] &&
-          taxableIncome <= NhifMonthlyRates[i][1]
-        ) {
-          NhifDeducts = NhifMonthlyRates[i][2];
-          break;
-        }
-      }
-
-      //results printing
-      console.log("Taxableincome:", taxableIncome);
-      console.log("NSSF Deducts:", NssfRate);
-      console.log("NHIF Deducts:", NhifMonthlyRates);
+    if (income <= nhifRate.threshold) {
+      deduction = nhifRate.rate;
+      break;
     }
+  }
+
+  return deduction;
+}
+
+
+//calculate the monthly tax of you income.
+function calculateTax(income, TaxRates) {
+  let tax = 0;
+
+  for (let i = 0; i < TaxRates.length; i++) {
+    const rate = TaxRates[i];
+
+    if (income <= rate.threshold) {
+      break;
+    }
+
+    tax += (rate.threshold - (i > 0 ? TaxRates[i - 1].threshold : 0)) * rate.rate;
+  }
+
+  tax += (income - tax) * TaxRates[TaxRates.length - 1].rate;
+  return tax;
+}
+
+
+// calculate NSSF-Deductions from your monthly income.
+function calculateNSSFDeductions(income) {
+  return income * NssfRate;
+}
+
+
+//Gross salary totals should be inclusive of the benefits and salary.
+function calculateGrossIncome(salary, benefits) {
+  return salary + benefits;
+}
+
+// Net salary should be the Gross salary lessing ALL the Deductions
+function calculateNetSalary() {
+  const salaryInput = prompt("Enter your Monthly basic salary:"); //prompt to enter monthly salary
+  const salary = parseFloat(salaryInput);
+
+  const benefitsInput = prompt("Enter your Monthly total benefits:"); //prompt to enter monthly benefits
+  const benefits = parseFloat(benefitsInput);
+  if (isNaN(salary) || isNaN(benefits)) {
+    console.log("Invalid inputs");
+    alert("invalid input.Please Enter a number"); // alert incase you Entered NaN.
+    return;
+  }
+  const grossIncome = calculateGrossIncome(salary, benefits);
+  const nhifDeductions = calculateNHIFDeductions(salary);
+  const tax = calculateTax(grossIncome, KraTaxRates);
+  const nssfDeductions = calculateNSSFDeductions(salary);
+  const netSalary = grossIncome - tax - nhifDeductions - nssfDeductions;
+
+  alert(`Your net salary is: ${netSalary}`);
+}
+
+calculateNetSalary();
