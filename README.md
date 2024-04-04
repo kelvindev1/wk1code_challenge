@@ -6,12 +6,15 @@ This is a week one code challenge.
 
 24/3/2024.
 
-# By _ kelvindev1_
+# AUTHOR
 
-##decription
+Kelvindev1 [(https://github.com/kelvindev1/wk1code_challenge.git)]
+
+# decription
+
 have created three code programs. one for speed testing, the other for grading students grades and the other for calculating the net salary of an individual.
 
-## installation
+# installation
 
 you use git clone to clone to be able to download the document in Github.
 
@@ -19,19 +22,23 @@ you use git clone to clone to be able to download the document in Github.
 
 for you to git clone you need to have a gitHub account.
 
-## installation instruction.
+### installation instruction.
 
-use this link to git clone --------------------
+use this link to git clone [(git@github.com:kelvindev1/wk1code_challenge.git)]
 
 ## Technologies used
 
-HTML, CSS, JAVASCRIPT and GITHUB.
+1.HTML.
+1.CSS.
+1.JAVASCRIPT.
+1.GITHUB.
 
-## Support and contact details
+# Support and contact details
 
-github.com/kelvindev1.
+GIT:[(https://github.com/kelvindev1/wk1code_challenge.git)]
+email:[(kelvinmutugi336@gmail.com)]
 
-## license
+# license
 
 The content of this site is licensed under the MIT license.
 copyright (C) 2024.
