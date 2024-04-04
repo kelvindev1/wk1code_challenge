@@ -2,23 +2,23 @@
 
 This is a week one code challenge.
 
-# date
+# Date:
 
 24/3/2024.
 
-# AUTHOR
+# Author
 
 Kelvindev1 [(https://github.com/kelvindev1/wk1code_challenge.git)]
 
-# decription
+# Decription
 
-have created three code programs. one for speed testing, the other for grading students grades and the other for calculating the net salary of an individual.
+Have created three code programs. one for speed testing, the other for grading students grades and the other for calculating the net salary of an individual.
 
 # installation
 
 you use git clone to clone to be able to download the document in Github.
 
-## installatyion requirements
+## Installation requirements
 
 for you to git clone you need to have a gitHub account.
 
@@ -36,7 +36,6 @@ use this link to git clone [(https://github.com/kelvindev1/wk1code_challenge.git
 # Support and contact details
 
 GIT:[(https://github.com/kelvindev1/wk1code_challenge.git)]
-email:[mailto:(kelvinmutugi336@gmail.com)]
 
 # license
 
