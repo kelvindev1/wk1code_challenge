@@ -28,10 +28,10 @@ use this link to git clone [(git@github.com:kelvindev1/wk1code_challenge.git)]
 
 ## Technologies used
 
-1.HTML.
-1.CSS.
-1.JAVASCRIPT.
-1.GITHUB.
+1. HTML
+1. CSS
+1. JAVASCRIPT
+1. GITHUB
 
 # Support and contact details
 
