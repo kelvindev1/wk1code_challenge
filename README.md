@@ -2,7 +2,7 @@
 
 This is a week one code challenge.
 
-## date
+# date
 
 24/3/2024.
 
@@ -24,7 +24,7 @@ for you to git clone you need to have a gitHub account.
 
 ### installation instruction.
 
-use this link to git clone [(git@github.com:kelvindev1/wk1code_challenge.git)]
+use this link to git clone [(https://github.com/kelvindev1/wk1code_challenge.git)]
 
 ## Technologies used
 
@@ -36,7 +36,7 @@ use this link to git clone [(git@github.com:kelvindev1/wk1code_challenge.git)]
 # Support and contact details
 
 GIT:[(https://github.com/kelvindev1/wk1code_challenge.git)]
-email:[(kelvinmutugi336@gmail.com)]
+email:[mailto:(kelvinmutugi336@gmail.com)]
 
 # license
 
